@@ -27,4 +27,4 @@ Browse to the project directory and run `train.py` to generate training data bas
 ```
 python3.6 Train.py
 ```
-Run `navigation.py` to see the agent navigate around the world using the generated training data.
+Run `replay.py` to watch an episode where the agent navigates around the world using the generated training data.
