@@ -1,6 +1,8 @@
 ## Unity ML-Agents
 This repository contains a solution to the ML-Agents Navigation project, part of Udacity's Deep Reinforcement Learning Nanodegree.
 
+![gif](https://user-images.githubusercontent.com/10624937/42135619-d90f2f28-7d12-11e8-8823-82b970a54d7e.gif)
+
 The objective is to train a machine learning agent to navigate around a large square world, collecting yellow bananas and avoiding blue ones.
 
 This project has been developed using Python 3.6 but should work using newer releases.
