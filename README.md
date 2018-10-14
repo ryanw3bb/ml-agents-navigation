@@ -1,4 +1,4 @@
-# Unity ML-Agents
+## Unity ML-Agents
 This repository contains a solution to the ML-Agents Navigation project, part of Udacity's Deep Reinforcement Learning Nanodegree.
 
 The objective is to train a machine learning agent to navigate around a large square world, collecting yellow bananas and avoiding blue ones.
@@ -23,8 +23,8 @@ python3.6 -m pip install torch
 ```
 
 ## Running the Project
-Browse to the project directory and run Train.py to generate training data based on the implemented learning model.
+Browse to the project directory and run `train.py` to generate training data based on the implemented learning model.
 ```
 python3.6 Train.py
 ```
-Run Navigation.py to see the agent navigate around the world using the generated training data.
+Run `navigation.py` to see the agent navigate around the world using the generated training data.
