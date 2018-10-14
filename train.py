@@ -4,9 +4,9 @@ from collections import deque
 from dqn_agent import Agent
 import torch
 
-env = UnityEnvironment(file_name="Banana.app")
+REQUIRED_SCORE = 13
 
-required_score = 13
+env = UnityEnvironment(file_name="Banana.app")
 
 # get the default brain
 brain_name = env.brain_names[0]
@@ -30,7 +30,7 @@ print('States have length:', state_size)
 
 agent = Agent(state_size=state_size, action_size=action_size, seed=0)
 
-def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
+def dqn(n_episodes=2000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
     """Deep Q-Learning.
 
     Params
@@ -44,10 +44,12 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
     scores = []  # list containing scores from each episode
     scores_window = deque(maxlen=100)  # last 100 scores
     eps = eps_start  # initialize epsilon
+
     for i_episode in range(1, n_episodes + 1):
         env_info = env.reset(train_mode=True)[brain_name]
         state = env_info.vector_observations[0]  # get the current state
         score = 0
+
         while True:
             action = agent.act(state, eps)
             env_info = env.step(action)[brain_name]  # send the action to the environment
@@ -63,14 +65,18 @@ def dqn(n_episodes=2000, max_t=1000, eps_start=1.0, eps_end=0.01, eps_decay=0.99
         scores_window.append(score)  # save most recent score
         scores.append(score)  # save most recent score
         eps = max(eps_end, eps_decay * eps)  # decrease epsilon
+
         print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)), end="")
+
         if i_episode % 100 == 0:
             print('\rEpisode {}\tAverage Score: {:.2f}'.format(i_episode, np.mean(scores_window)))
-        if np.mean(scores_window) >= required_score:
+
+        if np.mean(scores_window) >= REQUIRED_SCORE:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode - 100,
                                                                                          np.mean(scores_window)))
             torch.save(agent.qnetwork_local.state_dict(), 'training_data.pth')
             break
+
     return scores
 
 

@@ -2,7 +2,6 @@ from unityagents import UnityEnvironment
 from dqn_agent import Agent
 import torch
 
-num_episodes = 100
 env = UnityEnvironment(file_name="Banana.app")
 
 # get the default brain
@@ -12,26 +11,19 @@ brain = env.brains[brain_name]
 # reset the environment
 env_info = env.reset(train_mode=True)[brain_name]
 
-# number of agents in the environment
-print('Number of agents:', len(env_info.agents))
-
-# number of actions
+# actions
 action_size = brain.vector_action_space_size
-print('Number of actions:', action_size)
 
-# examine the state space
-state = env_info.vector_observations[0]
-print('States look like:', state)
-state_size = len(state)
-print('States have length:', state_size)
-
-# create agent
-agent = Agent(state_size=state_size, action_size=action_size, seed=0)
-agent.qnetwork_local.load_state_dict(torch.load('training_data.pth'))
+# state space
+state_size = len(env_info.vector_observations[0])
 
 env_info = env.reset(train_mode=False)[brain_name]  # reset the environment
 state = env_info.vector_observations[0]  # get the current state
 score = 0  # initialize the score
+
+# create agent
+agent = Agent(state_size=state_size, action_size=action_size, seed=0)
+agent.qnetwork_local.load_state_dict(torch.load('training_data.pth'))
 
 while True:
     action = agent.act(state)  # select an action based on state
