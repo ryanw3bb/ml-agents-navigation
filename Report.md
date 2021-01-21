@@ -24,11 +24,11 @@ The following hyperparameters were used in the final training solution:
 
 ![results](images/results.png)
 
-Episode 100	Average Score: 1.15
-Episode 200	Average Score: 4.70
-Episode 300	Average Score: 8.28
-Episode 400	Average Score: 10.80
-Episode 454	Average Score: 13.03
+Episode 100	Average Score: 1.15  
+Episode 200	Average Score: 4.70  
+Episode 300	Average Score: 8.28  
+Episode 400	Average Score: 10.80  
+Episode 454	Average Score: 13.03  
 Environment solved in 354 episodes!	Average Score: 13.03
 
 ## Ideas for future work
