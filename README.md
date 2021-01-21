@@ -21,8 +21,9 @@ python pip install torch
 ```
 
 ## Running the Project
-Browse to the project directory and run `train.py` to generate training data based on the implemented learning model.
+Browse to the project directory and run `train.py` to begin training. The trained weights are saved to the file `checkpoints.pth` once the required score is reached.
+
 ```
 python train.py
 ```
-Run `play.py` to watch an episode where the agent navigates around the world using the training data.
+Run `play.py` to watch an episode where a smart agent navigates around the world using the trained data.
