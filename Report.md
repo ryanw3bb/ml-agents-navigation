@@ -2,8 +2,7 @@
 
 ## Learning algorithm
 
-The learning algorithm used is Deep Q Learning as described in this research paper:
-https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf
+The learning algorithm used is Deep Q Learning as described in this [research paper](https://storage.googleapis.com/deepmind-media/dqn/DQNNaturePaper.pdf).
 
 The model architecture for the neural network is configured with the following layers:
 
