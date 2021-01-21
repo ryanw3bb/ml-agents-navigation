@@ -1,3 +1,8 @@
+"""
+Trains a model to play UnityEnvironment Banana.exe using a Deep Q Network
+and saves trained weights to file once the required score is reached
+"""
+
 from unityagents import UnityEnvironment
 import numpy as np
 from collections import deque
@@ -6,7 +11,7 @@ import torch
 
 REQUIRED_SCORE = 13
 
-env = UnityEnvironment(file_name="Banana.app")
+env = UnityEnvironment(file_name="Banana_Windows_x86_64/Banana.exe")
 
 # get the default brain
 brain_name = env.brain_names[0]
@@ -51,7 +56,7 @@ def dqn(n_episodes=2000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
         score = 0
 
         while True:
-            action = agent.act(state, eps)
+            action = agent.act(state, eps).astype(int)
             env_info = env.step(action)[brain_name]  # send the action to the environment
             next_state = env_info.vector_observations[0]  # get the next state
             reward = env_info.rewards[0]  # get the reward
@@ -74,7 +79,7 @@ def dqn(n_episodes=2000, eps_start=1.0, eps_end=0.01, eps_decay=0.995):
         if np.mean(scores_window) >= REQUIRED_SCORE:
             print('\nEnvironment solved in {:d} episodes!\tAverage Score: {:.2f}'.format(i_episode - 100,
                                                                                          np.mean(scores_window)))
-            torch.save(agent.qnetwork_local.state_dict(), 'training_data.pth')
+            torch.save(agent.qnetwork_local.state_dict(), 'checkpoint.pth')
             break
 
     return scores

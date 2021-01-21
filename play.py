@@ -1,8 +1,13 @@
+"""
+Plays an episode of UnityEnvironment Banana.exe using actions inferred
+from trained weights loaded from file (checkpoint.pth)
+"""
+
 from unityagents import UnityEnvironment
 from dqn_agent import Agent
 import torch
 
-env = UnityEnvironment(file_name="Banana.app")
+env = UnityEnvironment(file_name="Banana_Windows_x86_64/Banana.exe")
 
 # get the default brain
 brain_name = env.brain_names[0]
@@ -23,10 +28,10 @@ score = 0  # initialize the score
 
 # create agent
 agent = Agent(state_size=state_size, action_size=action_size, seed=0)
-agent.qnetwork_local.load_state_dict(torch.load('training_data.pth'))
+agent.qnetwork_local.load_state_dict(torch.load('checkpoint.pth'))
 
 while True:
-    action = agent.act(state)  # select an action based on state
+    action = agent.act(state).astype(int)  # select an action based on state
     env_info = env.step(action)[brain_name]  # send the action to the environment
     next_state = env_info.vector_observations[0]  # get the next state
     reward = env_info.rewards[0]  # get the reward

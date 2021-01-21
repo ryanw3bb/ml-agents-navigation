@@ -1,5 +1,7 @@
 Banana.app
 unity-environment.log
 
+/venv
+/Banana_Windows_x86_64
 /.idea
 /__pycache__
