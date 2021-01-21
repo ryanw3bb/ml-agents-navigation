@@ -15,9 +15,9 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 The task is episodic, and in order to solve the environment, the agent must get an average score of +13 over 100 consecutive episodes.
 
 ## Dependencies
-Make sure you have python 3.6 installed and a virtual environment activated, then install the PyTorch (torch), NumPy and UnityAgents packages which are required to run. You can install them using pip:
+Make sure you have python 3.6 installed and a virtual environment activated, then install the required packages torch, numpy and unityagents. They can be installed using pip:
 ```
-python3.6 -m pip install torch 
+python pip install torch 
 ```
 
 ## Running the Project
