@@ -14,15 +14,21 @@ The state space has 37 dimensions and contains the agent's velocity, along with 
 
 The task is episodic, and in order to solve the environment, the agent must get an average score of +13 over 100 consecutive episodes.
 
-## Dependencies
-Make sure you have python 3.6 installed and a virtual environment activated, then install the required packages torch, numpy and unityagents. They can be installed using pip:
-```
-python pip install torch 
-```
+## Setup
+1. Clone this repository.  
+
+2. Make sure you have python 3.6 installed and a virtual environment activated, then install the required packages torch, numpy and unityagents. They can be installed using pip:
+    ```
+    python pip install torch 
+    ```
+3. Download the environment from one of the links below and extract in the repository directory:
+    - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Linux.zip)
+    - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana.app.zip)
+    - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86.zip)
+    - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P1/Banana/Banana_Windows_x86_64.zip)
 
 ## Running the Project
 Browse to the project directory and run `train.py` to begin training. The trained weights are saved to the file `checkpoints.pth` once the required score is reached.
-
 ```
 python train.py
 ```
